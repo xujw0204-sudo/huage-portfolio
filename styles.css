@@ -1699,3 +1699,15 @@ button {
   .case, .timeline-node, .ai-card, .data-card, .method-panel, .account-card, .mini-case, .top-list li, .metric { break-inside: avoid; page-break-inside: avoid; }
   section h2 { break-after: avoid; }
 }
+
+/* PDF 导出专用（仅在 html.pdf-export / print 下生效，不影响网页） */
+html.pdf-export .section-heading { margin-bottom: 40px; break-after: avoid; page-break-after: avoid; }
+html.pdf-export .section-heading + .case { break-before: avoid; page-break-before: avoid; }
+html.pdf-export .case-cover { max-height: 400px; }
+html.pdf-export .case-featured .case-media { min-height: 0; }
+@media print {
+  .section-heading { margin-bottom: 40px; break-after: avoid; page-break-after: avoid; }
+  .case-cover { max-height: 520px; }
+}
+html.pdf-export .case-featured { grid-template-columns: 0.42fr 0.58fr; gap: 28px; align-items: start; }
+html.pdf-export .case-featured .case-cover { max-height: 460px; width: 100%; }
