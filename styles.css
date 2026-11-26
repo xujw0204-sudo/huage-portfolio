@@ -22,12 +22,18 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 17px;
   line-height: 1.75;
   letter-spacing: 0;
+  background-color: #f3ead7;
+  background-image:
+    radial-gradient(1100px 680px at 0% -8%, rgba(226, 179, 64, 0.16), transparent 58%),
+    radial-gradient(860px 540px at 100% 12%, rgba(197, 106, 69, 0.10), transparent 54%),
+    radial-gradient(720px 480px at 72% 100%, rgba(28, 59, 46, 0.06), transparent 62%),
+    url("assets/grain-cream.png");
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -699,6 +705,50 @@ body.no-scroll { overflow: hidden; }
 
 .pill-link { margin-top: 8px; }
 
+.mast,
+.poster,
+#method,
+#tools,
+.hello-card,
+.site-footer {
+  background-color: #1c3b2e;
+  background-image:
+    radial-gradient(540px 300px at 92% 0%, rgba(244, 236, 223, 0.14), transparent 70%),
+    radial-gradient(680px 380px at 0% 100%, rgba(0, 0, 0, 0.28), transparent 74%),
+    url("assets/grain-green.png");
+  background-repeat: no-repeat, no-repeat, repeat;
+}
+
+.line,
+.hello,
+.case-one,
+.work,
+.sequence li,
+#storyboard,
+.films a,
+.rail a,
+.notes div {
+  background-color: #efe4d2;
+  background-image: url("assets/grain-cream.png");
+}
+
+.line,
+#storyboard { position: relative; }
+
+.line::after,
+#storyboard::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 11px;
+  height: 11px;
+  background: var(--mustard);
+  opacity: 0.45;
+  pointer-events: none;
+  clip-path: polygon(50% 0, 61% 35%, 100% 50%, 61% 65%, 50% 100%, 39% 65%, 0 50%, 39% 35%);
+}
+
 @media (max-width: 800px) {
   .page { padding: 0 20px 56px; }
 
@@ -778,7 +828,17 @@ body.no-scroll { overflow: hidden; }
 
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-  body { background: #fff; color: #1c241c; font-size: 12pt; line-height: 1.55; }
+  body {
+    color: #1c241c;
+    font-size: 12pt;
+    line-height: 1.55;
+    background-color: #f4ecdf;
+    background-image:
+      radial-gradient(160mm 90mm at 0% 0%, rgba(226, 179, 64, 0.10), transparent 60%),
+      radial-gradient(120mm 80mm at 100% 30%, rgba(197, 106, 69, 0.06), transparent 55%),
+      url("assets/grain-cream.png");
+    background-repeat: no-repeat, no-repeat, repeat;
+  }
 
   .mast, .menu-toggle, .site-nav, .lightbox, .spark, .swatch, .case-block { display: none !important; }
 
@@ -804,9 +864,9 @@ body.no-scroll { overflow: hidden; }
 
   .poster { overflow: hidden; }
 
-  .hello, .work { display: block; margin: 0; background: #fff; }
+  .hello, .work { display: block; margin: 0; background-color: transparent; background-image: none; }
 
-  .case-one { grid-template-columns: 42mm minmax(0, 1fr); gap: 4mm; margin: 0; background: #fff; }
+  .case-one { grid-template-columns: 42mm minmax(0, 1fr); gap: 4mm; margin: 0; background-color: transparent; background-image: none; }
 
   .hello-card { margin-top: 3mm; }
 
@@ -849,14 +909,26 @@ body.no-scroll { overflow: hidden; }
 
   .work-title, .shot-head b, .line h2, .block-title { font-size: 14pt; }
 
-  .line, #method, #tools { break-inside: auto; padding: 4mm 0; background: #fff; color: #1c241c; }
+  .line, #method, #tools, .sequence li, #storyboard, .films a, .notes div, .rail a {
+    break-inside: auto;
+    padding: 4mm 0;
+    background-color: transparent;
+    background-image: none;
+    color: #1c241c;
+  }
+
+  .line::after, #storyboard::after { opacity: 0.35; }
 
   #method h2, #tools h2, #method h3, #tools h3, #method span, #tools p, #method .kicker, #tools .kicker { color: #1c241c; }
 
   #method strong, #tools .aside-num, .kicker { color: #7a341f; }
 
-  .hello-card, .site-footer {
-    background: #1c3b2e;
+  .poster, .hello-card, .site-footer {
+    background-color: #1c3b2e;
+    background-image:
+      radial-gradient(80mm 40mm at 90% 0%, rgba(244, 236, 223, 0.10), transparent 70%),
+      url("assets/grain-green.png");
+    background-repeat: no-repeat, repeat;
     color: #f4ecdf;
   }
 
