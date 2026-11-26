@@ -1,38 +1,25 @@
-const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
-const progress = document.querySelector(".scroll-progress span");
-const glow = document.querySelector(".cursor-glow");
+
+if (menuButton && nav) {
+  menuButton.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    menuButton.setAttribute("aria-expanded", String(open));
+  });
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      menuButton.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
 const lightbox = document.querySelector(".lightbox");
 const lightboxImage = lightbox.querySelector("img");
 const lightboxClose = lightbox.querySelector(".lightbox-close");
 const lightboxPrev = lightbox.querySelector(".lightbox-prev");
 const lightboxNext = lightbox.querySelector(".lightbox-next");
 const lightboxCount = lightbox.querySelector(".lightbox-count");
-
-const setHeader = () => {
-  header.classList.toggle("scrolled", window.scrollY > 12);
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  const ratio = total > 0 ? window.scrollY / total : 0;
-  progress.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
-};
-
-setHeader();
-window.addEventListener("scroll", setHeader, { passive: true });
-window.addEventListener("resize", setHeader);
-
-menuButton.addEventListener("click", () => {
-  const open = nav.classList.toggle("is-open");
-  menuButton.setAttribute("aria-expanded", String(open));
-});
-
-nav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("is-open");
-    menuButton.setAttribute("aria-expanded", "false");
-  });
-});
-
 const triggers = [...document.querySelectorAll(".image-trigger")];
 let activeIndex = 0;
 let lastFocus = null;
@@ -83,15 +70,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") moveLightbox(-1);
   if (event.key === "ArrowRight") moveLightbox(1);
 });
-
-const finePointer = window.matchMedia("(pointer: fine)").matches;
-if (finePointer && glow) {
-  window.addEventListener("pointermove", (event) => {
-    glow.style.left = `${event.clientX}px`;
-    glow.style.top = `${event.clientY}px`;
-    glow.classList.add("is-active");
-  }, { passive: true });
-}
 
 window.addEventListener("beforeprint", () => {
   lightbox.hidden = true;
